@@ -1,0 +1,104 @@
+/* Google Fonts - Poppins */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c1c1c; 
+    column-gap: 30px;
+}
+.form{
+    position: absolute;
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background-color: #1c1c1c; 
+}
+header{
+    font-size: 28px;
+    font-weight: 600;
+    color: #bbbbbb;
+    text-align: center;
+}
+form{
+    margin-top: 30px;
+}
+.form .field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+.button-field{
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    background-color    : #ffffff;
+    color:#1c1c1c; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+/* background-color    : #bdbdbd; */
+.button-field:hover{
+    background-color    : #bbbbbb;
+    text-decoration: underline;
+}
+
+.field input {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.input-field input{
+    color:#bbbbbb;
+    background-color    : #1c1c1c; 
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#bbbbbb;
+}
+
+.field input:focus{
+    background-color    : #323232;
+}
+
+.field input:hover{
+    background-color    : #323232;
+}
+
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #bbbbbb;
+}
+.form a{
+    color: #0171d3;
+    text-decoration: none;
+}
+.form-content a:hover{
+    text-decoration: underline;
+}
+.media-options a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

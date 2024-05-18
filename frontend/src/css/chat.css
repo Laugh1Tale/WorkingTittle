@@ -1,0 +1,300 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c; 
+    color: #eee; 
+  }
+
+button {
+    border: 0;
+}
+
+  .top-line {
+    color:#bbbbbb;
+    height: 5vh;
+    border-bottom: 0.001em solid #bbbbbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+  }
+
+  .chat-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 0.001em solid #bbbbbb;
+  }
+  
+  /* Стилизация ползунка */
+  .container::-webkit-scrollbar-thumb {
+    background-color: #333; /* Цвет ползунка */
+    width: 10px; /* Ширина ползунка */
+  }
+  
+  /* Стилизация трека (фона) скроллбара */
+  .container::-webkit-scrollbar-track {
+    background-color: transparent; /* Прозрачный фон */
+  }
+
+  .chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+	align-items:     flex-start;
+    overflow-y: auto;
+    padding: 1em;
+    scrollbar-width: none; 
+  }
+
+    /* Стилизация ползунка */
+    .chat::-webkit-scrollbar-thumb {
+        background-color: #333; /* Цвет ползунка */
+        width: 10px; /* Ширина ползунка */
+      }
+      
+      /* Стилизация трека (фона) скроллбара */
+      .chat::-webkit-scrollbar-track {
+        background-color: transparent; /* Прозрачный фон */
+      }
+
+  .message {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    padding: 1em;
+    border-radius: 10px;
+    min-width: 0;
+    max-width: 75%;
+    border: 0.001em solid #bbbbbb;
+    word-break: normal;
+  }
+  
+  .user {
+    background-color: #1b262a; 
+    margin-left: auto;
+  }
+  
+  .bot {
+    text-align: left;
+  }
+  
+  .sidebar {
+    background-color: #1b262a; 
+    position: relative;
+    width: 13%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar .right {
+    padding: 5px;
+    padding-top: 15vh;
+    right: 0;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+    button.option {
+    background-color: #1e1e1e; 
+    color: #bbbbbb;
+    border-radius: 10px;
+    height: 8%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%; 
+  }
+
+  button.send {
+    background-color: #1d93ab; 
+    color: #bbbbbb;
+    border-radius: 10px;
+    height: 4vh;
+    max-height: 6vh;
+  }
+
+  img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    border-radius: 30%;
+  }
+  
+  .profile {
+    position: absolute;
+    bottom: 2vh;
+    left: 2vh;
+    border-radius: 30%;
+    height: 5vh;
+    width: 5vh;
+    background-color: #1e1e1e;
+    padding: 10px;
+  }
+
+  .input-container {
+    border-top: 0.001em solid #bbbbbb;
+    display: flex;
+    padding: 10px;
+    padding-top: 14px;
+    align-items: center;
+  }
+
+  textarea {
+    font-size: 1.2em;
+    background-color: #1e1e1e;
+    color: #bbbbbb;
+    resize: vertical;
+    min-height: 40px;
+    max-height: 250px;
+    flex: 1;
+    padding: 10px;
+    border: 0.001em solid #bbbbbb;
+    border-radius: 5px;
+    margin-right: 10px;
+    scrollbar-width: none; 
+  }
+
+      /* Стилизация ползунка */
+      textarea::-webkit-scrollbar-thumb {
+        background-color: #333; /* Цвет ползунка */
+        width: 10px; /* Ширина ползунка */
+      }
+      
+      /* Стилизация трека (фона) скроллбара */
+      textarea::-webkit-scrollbar-track {
+        background-color: transparent; /* Прозрачный фон */
+      }
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #1b262a; 
+        padding: 40px;
+        border: 1px solid #bbbbbb;
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .logout {
+        background-color: #1e1e1e;
+        color: #bbbbbb;
+        font-size: 2em;
+        padding: 10px;
+        border: 1px solid #bbbbbb;
+        border-radius: 10px;
+      }
+
+      div.option1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: #1e1e1e; 
+        color: #bbbbbb;
+        border-radius: 10px;
+        height: 8%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 2vh; 
+      }
+    
+      .logo-sidebar {
+        position: absolute;
+        top: 3vh;
+        left: 3vh;
+        border-radius: 30%;
+        height: 5vh;
+        width: 5vh;
+        background-color: #1e1e1e;
+        padding: 10px;
+      }
+    
+      .logo-sidebar-img {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        border-radius: 30%;
+      }
+    
+      .app-name-sidebar {
+        text-align: center;
+      }
+
+      .save-button {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 10px 10px;
+        background-color: #323232;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+      }
+    
+    
+      .input-topic {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 10px 10px;
+        background-color: #323232;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        height: 40vh;
+        width: 95%;
+        resize: vertical;
+        font-size: 0.9em;
+      }
+  
+  
+      .language-level {
+        margin-bottom: 10px;
+        padding: 10px 10px;
+        background-color: #323232;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+      }
+    
+      .description-chat {
+        padding: 3px;
+        text-align: left;
+        border: 0.001em solid #bbbbbb;
+        background-color: #1e1e1e; 
+        color: #bbbbbb;
+        border-radius: 10px;
+        width: auto;
+        height: auto;
+        margin-top: 5%; 
+      }

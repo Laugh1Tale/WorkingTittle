@@ -1,0 +1,113 @@
+    .home-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+    }
+  
+  .nav-container {
+    background-color: #1e1e1e; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    width: 50vw;
+  }
+
+  .button-field,
+  .button-link {
+    width: 40vw;
+    background-color: #1e1e1e; 
+  }
+
+  .button-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.001em solid #bbbbbb;
+    border-radius: 10px;
+    height: 10%;
+    text-decoration: "none";
+    margin: 20px;
+    color: #bbbbbb;
+  }
+  
+  .button-nav {
+    display: flex;
+    text-decoration: "none";
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    color: #bbbbbb;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 10%;
+  }
+    /*
+  
+  .button-field:hover {
+    background-color: #bbbbbb; 
+  } */
+
+    
+  .home-sidebar {
+    background-color: #1b262a; 
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    border-radius: 30%;
+  }
+  
+  .profile {
+    position: absolute;
+    bottom: 2vh;
+    left: 2vh;
+    border-radius: 30%;
+    height: 5vh;
+    width: 5vh;
+    background-color: #1e1e1e;
+    padding: 10px;
+  }
+
+  .logout {
+    background-color: #1e1e1e;
+    color: #bbbbbb;
+    font-size: 2em;
+    padding: 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+  }
+
+  .home-logo {
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    border-radius: 30%;
+    height: 10vw;
+    width: 10vw;
+    background-color: #1e1e1e;
+    padding: 10px;
+    border: 0.001em solid #bbbbbb;
+  }
+
+  .home-text {
+    line-height: 1.5;
+    position: absolute;
+    font-size: 2em;
+    top: 45vh;
+    left: 6vw;
+    height: 30vh;
+    width: 38vw;
+  }
