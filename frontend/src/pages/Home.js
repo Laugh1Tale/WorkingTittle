@@ -4,6 +4,7 @@ import { ChatPage } from './Chat'
 import { TestsPage } from './Tests'
 import { ListeningPage } from './Listening'
 import { ReadingPage } from './Reading'
+import { isAuthentificated } from '../App'
 import '../css/home.css';
 
 export const HomePage = () => {
@@ -40,6 +41,10 @@ export const HomePage = () => {
 
       const handleProfileClick = () => {
         setIsOpen(!isOpen);
+      };
+
+      const logOut = () => {
+        window.location.href = '/sign-in';
       };
   
     return (
@@ -83,7 +88,7 @@ export const HomePage = () => {
         {isOpen && (
         <div className="popup">
           <span className="close" onClick={handleProfileClick}>&times;</span>
-          <button className="logout"> Logout</button>
+          <button className="logout" onClick={logOut}> Logout</button>
         </div>
       )}
       </div>

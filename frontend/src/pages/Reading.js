@@ -61,7 +61,9 @@ export const ReadingPage = () => {
 
     const fetchQuestions = async () => {
         try {
-            const res = await fetch(`http://194.120.24.48:80/reading`, {
+            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
+            const url = "http://194.120.24.48:80/reading" + exam;
+            const res = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -144,6 +146,10 @@ export const ReadingPage = () => {
         setCurrentChat(chatId);
       };
 
+      const logOut = () => {
+        window.location.href = '/sign-in';
+      };
+
     return (
         <div className="test-page">
                   <div className="sidebar">
@@ -174,6 +180,7 @@ export const ReadingPage = () => {
                                     <span>Экзамен :  </span>
                                     <select className="language-level" value={languageLevel} onChange={handleLanguageLevelChange}>
                                         <option value="TOEFL">TOEFL</option>
+                                        <option value="JLPT">JLPT</option>
                                     </select>
                                 </div>
                                 <button className="save-button" type="submit">Начать тест</button>
@@ -204,7 +211,9 @@ export const ReadingPage = () => {
                                     </div>
                                     {showIntermediateScreen && (
                                         <div className="intermediate-screen">
-                                            <div className="explanation-icon" onClick={handleToggleExplanation}>Почему так?</div>
+                                            <div className="explanation-icon" onClick={handleToggleExplanation}>Почему так 
+                                            <img className="explanation-pic" src={require('../pics/question2.png')} />
+                                            </div>
                                             {showExplanation && (
                                                 <div className="explanation">
                                                     <p>{questionsData[currentQuestion].explanation}</p>
@@ -230,7 +239,7 @@ export const ReadingPage = () => {
             {isOpen && (
                 <div className="popup">
                     <span className="close" onClick={() => setIsOpen(!isOpen)}>&times;</span>
-                    <button className="logout"> Logout</button>
+                    <button className="logout" onClick={() => logOut()}> Logout</button>
                 </div>
             )}
         </div>

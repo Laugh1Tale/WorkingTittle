@@ -12,12 +12,14 @@ export const WritingPage = () => {
     const [showComments, setShowComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [languageLevel, setLanguageLevel] = useState('A0');
+    const [isOpenAlert, setIsOpenAlert] = useState(false);
+    const [languageLevel, setLanguageLevel] = useState('TOEFL');
     const [isHovered1, setIsHovered1] = useState(false);
     const [isHovered2, setIsHovered2] = useState(false);
     const [isHovered3, setIsHovered3] = useState(false);
     const [selectedButton, setSelectedButton] = useState(3);
     const [currentChat, setCurrentChat] = useState(3);
+    const [isValid, setIsValid] = useState(false);
 
     const handleGoHome = () => {
         window.location.href = '/home';
@@ -25,6 +27,10 @@ export const WritingPage = () => {
 
     const handleProfileClick = () => {
         setIsOpen(!isOpen);
+      };
+
+      const handleAlertClick = () => {
+        setIsOpenAlert(!isOpenAlert);
       };
     
 
@@ -55,7 +61,9 @@ export const WritingPage = () => {
     const fetchEssayTopic = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`http://194.120.24.48:80/writing`, {
+            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
+            const url = "http://194.120.24.48:80/writing" + exam;
+            const res = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -77,12 +85,24 @@ export const WritingPage = () => {
         fetchEssayTopic();
     };
 
+    const validateTextArea = (text) => {
+        const words = text.trim().split(/\s+/).length;
+        setIsValid(words >= 70 && words <= 150);
+      };
+
     const handleSubmitEssay = async () => {
+        validateTextArea(essayText)
+        if (!isValid) {
+            setIsOpenAlert(true)
+            return;
+        }
         setLoading(true);
         console.log(essayTopic)
         console.log(essayText)
         try {
-            const response = await fetch('http://194.120.24.48:80/writing/check', {
+            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
+            const url = "http://194.120.24.48:80/writing/check" + exam;
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -128,6 +148,10 @@ export const WritingPage = () => {
         setCurrentChat(chatId);
       };
 
+      const logOut = () => {
+        window.location.href = '/sign-in';
+      };
+
     return (
         <div className="test-page">
                   <div className="sidebar">
@@ -158,6 +182,7 @@ export const WritingPage = () => {
                                 <span>Экзамен :  </span>
                                 <select className="language-level" value={languageLevel} onChange={handleLanguageLevelChange}>
                                     <option value="TOEFL">TOEFL</option>
+                                    <option value="JLPT">JLPT</option>
                                 </select>
                             </div>
                             <button className="save-button" type="submit">Написать эссе</button>
@@ -169,12 +194,13 @@ export const WritingPage = () => {
                 {showEssayInput && (
                     <div>
                         <div className="essay-text-container">
-                            <p>Ниже представлен текст, поделитесь своими размышлениями о данном тексте в виде эссе, длинной 150-225 слов: <br></br><br></br><br></br>{essayTopic}</p>
+                            <p>Ниже представлен текст, поделитесь своими размышлениями о данном тексте в виде эссе, длиной 70-150 слов: <br></br><br></br><br></br>{essayTopic}</p>
                         </div>
                         <div className='essay-container'>
                         <textarea
                             className='essay-area'
                             value={essayText}
+                            pattern="."
                             onChange={(e) => setEssayText(e.target.value)}
                             placeholder="Напишите ваше эссе здесь...">
                         </textarea>
@@ -190,6 +216,18 @@ export const WritingPage = () => {
                     </div>
                 )}
             </div>
+            {isOpen && (
+        <div className="popup">
+          <span className="close" onClick={handleProfileClick}>&times;</span>
+          <button className="logout" onClick={logOut}> Logout</button>
+        </div>
+      )}
+        {isOpenAlert && (
+        <div className="popup">
+          <span className="close" onClick={handleAlertClick}>&times;</span>
+          <div>Текст должен содержать от 70 до 150 слов.</div>
+        </div>
+      )}
         </div>
     );
 };

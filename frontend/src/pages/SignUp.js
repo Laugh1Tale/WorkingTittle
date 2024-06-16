@@ -5,13 +5,17 @@ import { HomePage } from './Home'
 import '../css/auth.css';
 
 export const SignUp = () => {
+  const changeIsAuth = () => {
+    window.location.href = '/home';
+  } 
+
     return (
       <body>
         <section className="container forms">
           <div className="form signup">
             <div className="form-content">
               <header>Signup</header>
-              <form action="#">
+              <form action="/home">
                 <div className="field input-field">
                   <input placeholder="Name" />
                 </div>
@@ -21,20 +25,19 @@ export const SignUp = () => {
                 </div>
 
                 <div className="field input-field">
-                <input placeholder="Email" type="email" className="input" />
+                <input required placeholder="Email" type="email" className="input" />
                 </div>
 
                 <div className="field input-field">
-                  <input placeholder="Password" type="password" classNames="validate" />
+                  <input title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required placeholder="Password" type="password" classNames="validate" />
                 </div>
 
-                <Link to="/home">
-                  <button class="field button-field">SignUp</button>
-                </Link>
+                <button type="submit"  class="field button-field" style={{marginRight: 10}}>SignUp</button>
 
+{/* 
                 <Routes>
                   <Route path="/home" element={<HomePage />} />
-                </Routes>
+                </Routes> */}
 
                 <div class="form-link">
                   <span>Already have an account? <a href="/sign-in" class="link login-link">Login</a></span>

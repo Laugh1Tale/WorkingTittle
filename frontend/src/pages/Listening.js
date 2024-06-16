@@ -16,7 +16,7 @@ export const ListeningPage = () => {
     const [answerFeedback, setAnswerFeedback] = useState('');
     const [showAnswerFeedback, setShowAnswerFeedback] = useState(false);
     const [showIntermediateScreen, setShowIntermediateScreen] = useState(false);
-    const [languageLevel, setLanguageLevel] = useState('A0');
+    const [languageLevel, setLanguageLevel] = useState('TOEFL');
     const [longText, setLongText] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [audio, setAudio] = useState(null);
@@ -62,8 +62,11 @@ export const ListeningPage = () => {
 
     const fetchQuestions = async () => {
         try {
+            console.log(languageLevel)
             //const res = await fetch(`http://127.0.0.1:8000/listening`, {
-            const res = await fetch(`http://194.120.24.48:80/listening`, {
+            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
+            const url = "http://194.120.24.48:80/listening" + exam;
+            const res = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -81,7 +84,9 @@ export const ListeningPage = () => {
         setLoading(true);
         try {
             //const response = await fetch('http://127.0.0.1:8000/listening/audio', {
-            const response = await fetch('http://194.120.24.48:80/listening/audio', {
+            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
+            const url = "http://194.120.24.48:80/listening/audio" + exam;
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -179,6 +184,10 @@ export const ListeningPage = () => {
         setCurrentChat(chatId);
       };
 
+      const logOut = () => {
+        window.location.href = '/sign-in';
+      };
+
     return (
         <div className="test-page">
       <div className="sidebar">
@@ -209,6 +218,7 @@ export const ListeningPage = () => {
                                     <span>Экзамен :  </span>
                                     <select className="language-level" value={languageLevel} onChange={handleLanguageLevelChange}>
                                         <option value="TOEFL">TOEFL</option>
+                                        <option value="JLPT">JLPT</option>
                                     </select>
                                 </div>
                                 <button className="save-button" type="submit">Начать тест</button>
@@ -229,7 +239,7 @@ export const ListeningPage = () => {
                             </div>
                         </div>
                         <div className="question-container">
-                            {questionsData.length > 0 ? (
+                            {questionsData ? (
                                 <>
                                     <h2 className="question-name">{questionsData[currentQuestion].question}</h2>
                                     <ul className="options-list">
@@ -247,7 +257,9 @@ export const ListeningPage = () => {
                                     </div>
                                     {showIntermediateScreen && (
                                         <div className="intermediate-screen">
-                                            <div className="explanation-icon" onClick={handleToggleExplanation}>Почему так?</div>
+                                            <div className="explanation-icon" onClick={handleToggleExplanation}>Почему так 
+                                            <img className="explanation-pic" src={require('../pics/question2.png')} />
+                                            </div>
                                             {showExplanation && (
                                                 <div className="explanation">
                                                     <p>{questionsData[currentQuestion].explanation}</p>
@@ -258,7 +270,7 @@ export const ListeningPage = () => {
                                     )}
                                 </>
                             ) : (
-                                <div>Загрузка вопросов...</div>
+                                <div >Загрузка вопросов...</div>
                             )}
                         </div>
                     </>
@@ -273,7 +285,7 @@ export const ListeningPage = () => {
             {isOpen && (
                 <div className="popup">
                     <span className="close" onClick={() => setIsOpen(!isOpen)}>&times;</span>
-                    <button className="logout"> Logout</button>
+                    <button className="logout" onClick={() => logOut()}> Logout</button>
                 </div>
             )}
         </div>

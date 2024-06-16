@@ -102,3 +102,13 @@ form{
     align-items: center;
     justify-content: center;
 }
+
+.requirements {
+    padding: 0 30px 0 50px;
+    color: #999;
+    max-height: 0;
+    transition: 0.28s;
+    overflow: hidden;
+    color: red;
+    font-style: italic;
+  }

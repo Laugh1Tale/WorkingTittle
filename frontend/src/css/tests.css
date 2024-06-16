@@ -153,6 +153,11 @@ body {
 
   .explanation-icon {
     padding: 10px;
+    offset: 0px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    position: relative;
+    display: block;
   }
 
   .explanation {
@@ -338,4 +343,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid #ccc;
+  }
+
+  .explanation-pic {
+    background-color: #ccc;
+    height: 3vh;
+    width: 3vh;
+    offset: 0px;
+    border-radius: 50%;
   }
