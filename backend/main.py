@@ -42,7 +42,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import random
 from fastapi.responses import FileResponse
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 
 app = FastAPI()
 
