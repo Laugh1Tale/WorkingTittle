@@ -61,7 +61,7 @@ export const ReadingPage = () => {
 
     const fetchQuestions = async () => {
         try {
-            const res = await fetch(`http://127.0.0.1:8000/reading`, {
+            const res = await fetch(`http://194.120.24.48:80/reading`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

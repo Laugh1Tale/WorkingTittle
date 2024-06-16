@@ -62,7 +62,8 @@ export const ListeningPage = () => {
 
     const fetchQuestions = async () => {
         try {
-            const res = await fetch(`http://127.0.0.1:8000/listening`, {
+            //const res = await fetch(`http://127.0.0.1:8000/listening`, {
+            const res = await fetch(`http://194.120.24.48:80/listening`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -79,7 +80,8 @@ export const ListeningPage = () => {
     const fetchAudio = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/listening/audio', {
+            //const response = await fetch('http://127.0.0.1:8000/listening/audio', {
+            const response = await fetch('http://194.120.24.48:80/listening/audio', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

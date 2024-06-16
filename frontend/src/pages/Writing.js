@@ -55,7 +55,7 @@ export const WritingPage = () => {
     const fetchEssayTopic = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`http://127.0.0.1:8000/writing`, {
+            const res = await fetch(`http://194.120.24.48:80/writing`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ export const WritingPage = () => {
         console.log(essayTopic)
         console.log(essayText)
         try {
-            const response = await fetch('http://127.0.0.1:8000/writing/check', {
+            const response = await fetch('http://194.120.24.48:80/writing/check', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
