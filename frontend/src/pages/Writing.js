@@ -62,7 +62,7 @@ export const WritingPage = () => {
         setLoading(true);
         try {
             const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
-            const url = "http://194.120.24.48:80/writing" + exam;
+            const url = "http://194.120.24.48:80/writing/" + exam;
             const res = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -88,6 +88,8 @@ export const WritingPage = () => {
     const validateTextArea = (text) => {
         const words = text.trim().split(/\s+/).length;
         setIsValid(words >= 70 && words <= 150);
+        if (languageLevel == "JLPT")
+            setIsValid(true);
       };
 
     const handleSubmitEssay = async () => {
@@ -101,7 +103,7 @@ export const WritingPage = () => {
         console.log(essayText)
         try {
             const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
-            const url = "http://194.120.24.48:80/writing/check" + exam;
+            const url = "http://194.120.24.48:80/writing/check/" + exam;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -109,6 +111,7 @@ export const WritingPage = () => {
                 },
                 body: JSON.stringify({ topic: essayTopic, essay: essayText }),
             });
+            console.log(essayText)
             const data = await response.json();
             setComments(data.text);
             setShowEssayInput(false);

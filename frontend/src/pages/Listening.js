@@ -65,7 +65,7 @@ export const ListeningPage = () => {
             console.log(languageLevel)
             //const res = await fetch(`http://127.0.0.1:8000/listening`, {
             const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
-            const url = "http://194.120.24.48:80/listening" + exam;
+            const url = "http://194.120.24.48:80/listening/" + exam;
             const res = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -84,8 +84,7 @@ export const ListeningPage = () => {
         setLoading(true);
         try {
             //const response = await fetch('http://127.0.0.1:8000/listening/audio', {
-            const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
-            const url = "http://194.120.24.48:80/listening/audio" + exam;
+            const url = "http://194.120.24.48:80/listening/audio";
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {

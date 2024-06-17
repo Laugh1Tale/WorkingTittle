@@ -15,7 +15,7 @@ export const ReadingPage = () => {
     const [answerFeedback, setAnswerFeedback] = useState('');
     const [showAnswerFeedback, setShowAnswerFeedback] = useState(false);
     const [showIntermediateScreen, setShowIntermediateScreen] = useState(false);
-    const [languageLevel, setLanguageLevel] = useState('A0');
+    const [languageLevel, setLanguageLevel] = useState('TOEFL');
     const [longText, setLongText] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered1, setIsHovered1] = useState(false);
@@ -62,7 +62,7 @@ export const ReadingPage = () => {
     const fetchQuestions = async () => {
         try {
             const exam = languageLevel == "TOEFL" ? "toefl" : "JLPT" ? "jlpt" : "";
-            const url = "http://194.120.24.48:80/reading" + exam;
+            const url = "http://194.120.24.48:80/reading/" + exam;
             const res = await fetch(url, {
                 method: 'GET',
                 headers: {
