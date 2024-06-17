@@ -185,7 +185,7 @@ export const WritingPage = () => {
                                 <span>Экзамен :  </span>
                                 <select className="language-level" value={languageLevel} onChange={handleLanguageLevelChange}>
                                     <option value="TOEFL">TOEFL</option>
-                                    <option value="JLPT">JLPT</option>
+                                    {/* <option value="JLPT">JLPT</option> */}
                                 </select>
                             </div>
                             <button className="save-button" type="submit">Написать эссе</button>
